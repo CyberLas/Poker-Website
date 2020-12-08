@@ -1,0 +1,116 @@
+﻿@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Jugar</title>
+    <style>
+        body {
+            background: #f2f2f2;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h3 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .social-box .box {
+            background: #FFF;
+            border-radius: 10px;
+            padding: 40px 10px;
+            margin: 20px 0px;
+            cursor: pointer;
+            transition: all 0.5s ease-out;
+        }
+
+            .social-box .box:hover {
+                box-shadow: 0 0 6px #4183D7;
+            }
+
+            .social-box .box .box-text {
+                margin: 20px 0px;
+                font-size: 15px;
+                line-height: 30px;
+            }
+
+            .social-box .box .box-btn a {
+                text-decoration: none;
+                color: #4183D7;
+                font-size: 16px;
+            }
+
+        .fa {
+            color: #4183D7;
+        }
+    </style>
+</head>
+<body>
+
+    @{int i = 0;
+        for (int z = 0; z < 5; z++)
+        {
+            <div class="social-box">
+                <div class="container">
+                    <div class="row">
+                        @foreach (var items in ViewBag.Ordenar)
+                        {
+                            var numero = new Random().Next(0, 2); var numero1 = new Random().Next(1, 2); var tipo = new Random().Next(0, 4);
+                            if (i % 5 == 0)
+                            {
+                                if (z < 1) { 
+                                    if (ViewBag.DoblePar != null)           { <div class="container"><h1>Saco : Doble Par</h1></div>}
+                                    if (ViewBag.PokerEstado != null)        { <div class="container"><h1>Saco : Poker</h1></div>}
+                                    if (ViewBag.EscaleraEstado != null)     { <div class="container"><h1>Saco : Escalera</h1></div>}
+                                    if (ViewBag.TrioEstado != null)         { <div class="container"><h1>Saco : Trio</h1></div>}
+                                    if (ViewBag.Full != null)               { <div class="container"><h1>Saco : Full</h1></div> }
+                                    if (ViewBag.EscaleraDeColor != null)    { <div class="container"><h1>Saco : Escalera de Color</h1></div> }
+                                    if (ViewBag.EscaleraReal != null)       { <div class="container"><h1>Saco : Escalera Real</h1></div>}
+                                    if (ViewBag.Color != null)              { <div class="container"><h1>Saco : Color</h1></div> }
+                                    if (ViewBag.UnPar != null)              { <div class="container"><h1>Saco : Un Par</h1></div> }
+                                }
+                            }
+                            <div class="col-lg-2 col-sm-9 text-center">
+                                <div class="box">
+                                    <i class="fa fa-behance fa-3x" aria-hidden="true"></i>
+                                    <div class="box-title">
+                                        @if (z != 0)
+                                        {
+                                            if (items.numero > 7) { items.numero = items.numero - numero1; } else {  items.numero = items.numero + numero; }
+                                        }
+                                        <h3>@items.numero</h3>
+                                    </div>
+                                    <div class="box-text">
+                                        @if (z != 0)
+                                        {
+                                            items.tipo = tipo;
+                                        }
+
+                                        @switch (items.tipo)
+                                        {
+                                            case 0: <h1>❤</h1>break;
+                                            case 1: <h1>♣</h1> break;
+                                            case 2: <h1>♠</h1> break;
+                                            case 3: <h1>♦</h1>break;
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            i++;
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
