@@ -39,7 +39,6 @@ namespace Poker.Repository
 
         public List<Carta> GenerarCartas()
         {
-            bool repetir = false;
             for (int i = 0; i < 25; i++)
             {
                 var numero = new Random().Next(1, 14);
@@ -49,11 +48,6 @@ namespace Poker.Repository
                     numero = numero,
                     tipo = tipo
                 });
-                /*
-                if (cartas.Count == numero && repetir == false) {
-                    cartas = null;
-                    repetir = true;
-                }*/
             }
 
             return cartas;

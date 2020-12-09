@@ -33,7 +33,6 @@ namespace Poker.Controllers
             if (app.DoblePar(null) == 1)        { ViewBag.DoblePar = app.Gano(); };
             if (app.UnPar(null) == 1)           { ViewBag.UnPar = app.Gano(); };
             if (app.Full(null) == 1)            { ViewBag.Full = app.Gano(); };
-
             return View();
         }
 

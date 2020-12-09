@@ -11,5 +11,7 @@ namespace Poker.Models
 
         public bool estado  { get; set; }
 
+        List<Carta> cartas  { get; set; }
     }
+
 }
